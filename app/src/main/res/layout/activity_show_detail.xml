@@ -14,187 +14,213 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/Btn_1"
+        android:layout_alignParentTop="false">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="หัวข้อ :"
-                    android:layout_height="wrap_content"
                     android:id="@+id/textView51"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent" />
-
-                <TextView
-                    android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView12"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textSize="24sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="รายละเอียด :"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView53"
-                    android:layout_weight="1"
                     android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:text="หัวข้อ :"
                     android:textAlignment="textEnd" />
 
                 <TextView
-                    android:text="TextView"
+                    android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView15"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
                     android:textSize="24sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="วันที่เริ่มขาย :"
+                    android:id="@+id/textView53"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="รายละเอียด :"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
                     android:id="@+id/textView54"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent" />
-
-                <TextView
-                    android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="วันที่เริ่มขาย :"
+                    android:textAlignment="textEnd" />
+
+                <TextView
                     android:id="@+id/textView19"
-                    android:textSize="24sp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textAlignment="textStart" />
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:text="วันที่สิ้นสุดขาย :"
-                    android:layout_height="wrap_content"
                     android:id="@+id/textView55"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent" />
-
-                <TextView
-                    android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="วันที่สิ้นสุดขาย :"
+                    android:textAlignment="textEnd" />
+
+                <TextView
                     android:id="@+id/textView21"
-                    android:textSize="24sp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textAlignment="textStart" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="สถานะ :"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView56"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="match_parent" />
-
-                <TextView
-                    android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView22"
-                    android:textSize="24sp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:textAlignment="textStart" />
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView56"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="สถานะ :"
+                    android:textAlignment="textEnd" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textAlignment="textStart"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:layout_height="180dp"
-
                     android:id="@+id/imageView7"
+
                     android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="180dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
 
                 <ImageView
-                    android:layout_height="180dp"
-
                     android:id="@+id/imageView5"
+
                     android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="180dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:text="ยกเลิก"
+    <LinearLayout
+        android:id="@+id/Btn_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button5"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="ย้อนกลับ" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:text="ยุติโพส" />
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:text="ผู้จอง" />
+
+    </LinearLayout>
+
 </RelativeLayout>

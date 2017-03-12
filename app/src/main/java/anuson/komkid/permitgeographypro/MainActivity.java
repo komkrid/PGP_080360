@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
             "mem_u_mail",
             "mem_u_tel",
             "mem_u_key",
-            "mem_u_pic"};
+            "mem_u_pic",
+            "score_black_lis"};
     private  String[] columnfarmerStrings = new String[]{
             "mem_id",
             "mem_user",
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         private Context context;
         private boolean aBoolean = true;
+        private int sta_blk_in = 3 ;
 
         public SynMember(Context context) {
             this.context = context;
@@ -176,18 +178,14 @@ public class MainActivity extends AppCompatActivity {
                         case 0: // for User
 
                             if (userString.equals(jsonObject.getString(columnUserStrings[1]))) {
-
                                 aBoolean = false;
                                 for (int j=0;j<columnUserStrings.length;j+=1) {
                                     loginStrings[j] = jsonObject.getString(columnUserStrings[j]);
                                     Log.d("2octV3", "logStrings(" + j + ") = " + loginStrings[j]);
-                                } //for
-
+                                    } //for
                             }   // if
-
                             break;
                         case 1: // for Farmer
-
                             if (userString.equals(jsonObject.getString(columnfarmerStrings[1]))) {
                                 aBoolean = false;
                                 for (int i1=0;i1<columnfarmerStrings.length;i1+=1) {
@@ -195,36 +193,38 @@ public class MainActivity extends AppCompatActivity {
                                     Log.d("2octV3", "logStrings(" + i1 + ") = " + loginStrings[i1]);
                                 }//for
                             }//if
-
                             break;
-
                     }   //switch
                 }   // for
                 if (aBoolean) {
                     //User false of Index False
                     MyAlert myAlert = new MyAlert();
-                    myAlert.myDialog(context, "User of Status False",
-                            "User หรือ สถานะผิด");
+                    myAlert.myDialog(context, "ผิดพลาด",
+                            "Username Passwoek หรือ สถานะผิดพลาด");
                 } else if (!passwordString.equals(loginStrings[2])) {
                     //password false
                     MyAlert myAlert = new MyAlert();
-                    myAlert.myDialog(context,"Password False",
-                            "Please Try Again Password False");
-                } else {
+                    myAlert.myDialog(context,"ผิดพลาด",
+                            "รหัสผ่านผิดพลาด");
+                }else {
                     //password Trie
                     switch (index) {
                         case 0:  // for User
-                            Intent newActivity = new Intent(MainActivity.this, Menu_user.class);
+                            if(Integer.parseInt(loginStrings[9]) == 3) {
+                                    MyAlert myAlert = new MyAlert();
+                                    myAlert.myDialog(context,"ประกาศ",
+                                            "ท่านไม่สามารถเข้าใช้งานได้ในขนานนี้เนื่องจากติดสานะ Black lis");
 
-                            //ส่งค่าไป ใน Login
-                            newActivity.putExtra("Login", loginStrings);
-
-                            startActivity(newActivity);
-                            Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Intent newActivity = new Intent(MainActivity.this, Menu_user.class);
+                                //ส่งค่าไป ใน Login
+                                newActivity.putExtra("Login", loginStrings);
+                                startActivity(newActivity);
+                                Toast.makeText(context, "Welcome", Toast.LENGTH_SHORT).show();
+                            }//if
                             break;
                         case 1: // for Farmeradmin
                             Intent newActivity2 = new Intent(MainActivity.this, Menu_farmer.class);
-
                             //ส่งค่าไป ใน Login
                             newActivity2.putExtra("Login", loginStrings);
                             startActivity(newActivity2);

@@ -1,5 +1,6 @@
 package anuson.komkid.permitgeographypro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,7 +26,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     private ImageView pic1ImageView, pic2ImageView;
 
-    private Button button;
+    private Button button,button_customer;
 
 
     @Override
@@ -52,6 +53,14 @@ public class ShowDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        button_customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newActivity = new Intent(ShowDetailActivity.this, Manu_customer_by_farmer.class);
+                startActivity(newActivity);
             }
         });
 
@@ -93,6 +102,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         pic1ImageView = (ImageView) findViewById(R.id.imageView5);
         pic2ImageView = (ImageView) findViewById(R.id.imageView7);
         button = (Button) findViewById(R.id.button5);
+        button_customer = (Button) findViewById(R.id.button11);
     }
     public static String dateThai(String strDate)
     {

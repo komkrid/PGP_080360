@@ -127,7 +127,7 @@ public class ShowDetailByUser extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(ShowDetailByUser.this);
         builder.setCancelable(false);
         builder.setTitle("การจองสินค้า");
-        builder.setMessage("เงื่อนไขการจอง");
+        builder.setMessage("คำเตือน หากท่านไม่ได้ไปในเวลาที่กำหนด ครบ3ครั้ง ท่านอาจโดนตัดสิทธิเข้าใช้งาน");
         builder.setIcon(R.drawable.dule_icon);
         builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
             @Override

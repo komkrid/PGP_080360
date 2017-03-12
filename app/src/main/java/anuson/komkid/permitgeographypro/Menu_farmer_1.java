@@ -98,7 +98,7 @@ public class Menu_farmer_1 extends FragmentActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             String srt = input.getEditableText().toString();
-                            Toast.makeText(context, srt, Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "ปลดล็อค : "+srt, Toast.LENGTH_LONG).show();
                         }
                     });
                     alert.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {

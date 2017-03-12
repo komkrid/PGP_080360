@@ -22,10 +22,6 @@ public class Menu_user_2 extends Activity {
 
     private String[] userLoginStrings, idReservStrings, mem_idStrings;
     private ListView listView;
-    private String[] columnReservStrings = new String[]{
-            "reserv_id",
-            "post_id",
-            "mem_u_id"};
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +65,7 @@ public class Menu_user_2 extends Activity {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
+
                 titleStrings[i] = jsonObject1.getString("post_tiltle");
                 endStrings[i] = jsonObject1.getString("post_data_end");
                 data_endStrings[i] = dateThai(endStrings[i]);
@@ -84,7 +81,8 @@ public class Menu_user_2 extends Activity {
 
                 checkExpDate(addOneDay(date_reserv[i]),
                         jsonObject1.getString("post_id"),
-                        jsonObject1.getString("status_reserv_id"));
+                        jsonObject1.getString("status_reserv_id"),
+                        jsonObject1.getString("post_data_end"));
 
                 Log.d("18JanV5", "date_reserv(" + i + ") ==> " + date_reserv[i]);
 
@@ -122,10 +120,13 @@ public class Menu_user_2 extends Activity {
 
     private void checkExpDate(String strExpDate,
                               String strPostID,
-                              String strStatus) {
+                              String strStatus,
+                              String strDateEnd) {
 
         String tag = "1MarchV3";
         Log.d(tag, "สิ่งที่ได้รับมา ==>" + strExpDate);
+
+
 
         String[] strings = strExpDate.split("-");
         Calendar currentCalendar = Calendar.getInstance();
@@ -147,6 +148,10 @@ public class Menu_user_2 extends Activity {
 
                     EditStatusWhenExip editStatusWhenExip = new EditStatusWhenExip(Menu_user_2.this);
                     editStatusWhenExip.execute(strPostID);
+
+                    Add_Blank_Lis add_blank_lis = new Add_Blank_Lis(Menu_user_2.this,strPostID,userLoginStrings[0],strDateEnd);
+                    add_blank_lis.execute();
+
                     if (Boolean.parseBoolean(editStatusWhenExip.get())) {
                         createListView();
                     }

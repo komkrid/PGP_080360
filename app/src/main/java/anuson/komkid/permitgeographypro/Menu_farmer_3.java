@@ -38,6 +38,11 @@ public class Menu_farmer_3 extends Activity {
         //Get Value From Intent
         loginStrings = getIntent().getStringArrayExtra("Login");
 
+        createListView();
+
+    }   // Main Method
+
+    private void createListView() {
         try {
 
             SynPost synPost = new SynPost(Menu_farmer_3.this, loginStrings[0]);
@@ -49,7 +54,7 @@ public class Menu_farmer_3 extends Activity {
             JSONArray jsonArray = new JSONArray(strJSON);
 
             final String[] titleStrings = new String[jsonArray.length()];
-            final String[] endStrings = new String[jsonArray.length()];
+
             final String[] data_endStrings = new String[jsonArray.length()];
             final String[] statusShowStrings = new String[jsonArray.length()];
             final String[] statusStrings = new String[jsonArray.length()];
@@ -58,11 +63,15 @@ public class Menu_farmer_3 extends Activity {
             final String[] pic1Strings = new String[jsonArray.length()];
             final String[] pic2Strings = new String[jsonArray.length()];
 
+            final String[] idStrings = new String[jsonArray.length()];
+            final String[] endStrings = new String[jsonArray.length()];
 
 
             for (int i = 0; i < jsonArray.length(); i++) {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                idStrings[i] = jsonObject.getString("post_id");
 
                 titleStrings[i] = jsonObject.getString("post_tiltle");
                 statusStrings[i] = jsonObject.getString("status_reserv_id");
@@ -76,6 +85,10 @@ public class Menu_farmer_3 extends Activity {
 
                 pic1Strings[i] = jsonObject.getString("post_pic");
                 pic2Strings[i] = jsonObject.getString("post_pic_two");
+
+                checkExpDate(jsonObject.getString("post_id"),
+                             jsonObject.getString("status_reserv_id"),
+                             jsonObject.getString("post_data_end"));
 
 
             }   // for
@@ -106,8 +119,49 @@ public class Menu_farmer_3 extends Activity {
         } catch (Exception e) {
             Log.d("27novV3", "e menu3 ==> " + e.toString());
         }
+    }
 
-    }   // Main Method
+    private void checkExpDate(String post_id,
+                              String status_reserv_id,
+                              String post_data_end) {
+
+
+        String[] strings = post_data_end.split("-");
+        Calendar currentCalendar = Calendar.getInstance();
+        Calendar expCalendar = Calendar.getInstance();
+        expCalendar.set(Calendar.YEAR, Integer.parseInt(strings[0]));
+        expCalendar.set(Calendar.MONTH, Integer.parseInt(strings[1])-1);
+        expCalendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(strings[2]));
+
+        if (currentCalendar.after(expCalendar)) {
+
+            try {
+
+                if (Integer.parseInt(status_reserv_id) == 1) {
+
+                    EditStatusWhenExip editStatusWhenExip = new EditStatusWhenExip(Menu_farmer_3.this);
+                    editStatusWhenExip.execute(post_id);
+
+                    if (Boolean.parseBoolean(editStatusWhenExip.get())) {
+                        createListView();
+                    }
+                }else if (Integer.parseInt(status_reserv_id) == 0){
+                    EditStatusWhenExip editStatusWhenExip = new EditStatusWhenExip(Menu_farmer_3.this);
+                    editStatusWhenExip.execute(post_id);
+
+                    if (Boolean.parseBoolean(editStatusWhenExip.get())) {
+                        createListView();
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+    }
 
     private String showStatus(String statusString) {
 
