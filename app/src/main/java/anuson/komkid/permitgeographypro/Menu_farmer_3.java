@@ -103,6 +103,7 @@ public class Menu_farmer_3 extends Activity {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                     Intent intent = new Intent(Menu_farmer_3.this, ShowDetailActivity.class);
+                    intent.putExtra("post_id", idStrings[i]);
                     intent.putExtra("post_tiltle", titleStrings[i]);
                     intent.putExtra("post_data_end", endStrings[i]);
                     intent.putExtra("status_reserv_id", statusStrings[i]);

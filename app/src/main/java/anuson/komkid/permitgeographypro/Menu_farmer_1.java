@@ -30,6 +30,7 @@ public class Menu_farmer_1 extends FragmentActivity {
 
     final Context context = this;
     private Button button,button_out;
+    private String srt;
 
     //สไลรูปภาพ
     MyPageAdapter adapter;
@@ -93,12 +94,17 @@ public class Menu_farmer_1 extends FragmentActivity {
                     final EditText input = new EditText(context);
                     alert.setView(input);
 
-
                     alert.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            String srt = input.getEditableText().toString();
-                            Toast.makeText(context, "ปลดล็อค : "+srt, Toast.LENGTH_LONG).show();
+
+
+                            srt = input.getEditableText().toString();
+
+                            Add_blank_Lis_by_farmer add_blank_lis_by_farmer = new Add_blank_Lis_by_farmer(Menu_farmer_1.this,srt);
+                            add_blank_lis_by_farmer.execute();
+
+
                         }
                     });
                     alert.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
@@ -111,6 +117,10 @@ public class Menu_farmer_1 extends FragmentActivity {
                     alertDialog.show();
                 }
             });
+
+
+
+
         button_out = (Button) findViewById(R.id.button_out);
         button_out.setOnClickListener(new View.OnClickListener(){
             @Override

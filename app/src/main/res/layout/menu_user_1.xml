@@ -5,39 +5,40 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgrok"
     android:weightSum="1">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="218dp">
+            android:layout_height="218dp"
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/imageView1"
                 android:layout_width="112dp"
                 android:layout_height="115dp"
-                app:srcCompat="@drawable/bird48"
-                android:id="@+id/imageView1"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp" />
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/bird48" />
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:text="@string/text10"
+                    android:id="@+id/textView6"
                     android:layout_width="212dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView6"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:gravity="center" />
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/text10"
+                    android:textSize="18sp" />
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -46,152 +47,152 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                        android:orientation="vertical">
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:layout_height="wrap_content"
                                 android:id="@+id/textView46"
-                                android:layout_weight="1"
-                                android:layout_marginTop="10dp"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:text="Username :"
-                                android:layout_width="170dp" />
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="Username :" />
 
                             <TextView
-                                android:text="TextView"
+                                android:id="@+id/textView8"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/textView8"
-                                android:layout_marginTop="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_weight="1" />
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="TextView" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:text="ชื่อ - นามสกุล :"
-                                android:layout_height="wrap_content"
                                 android:id="@+id/textView45"
-                                android:layout_weight="1"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
                                 android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="ชื่อ - นามสกุล :"
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:text="TextView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
                                 android:id="@+id/textView9"
-                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_weight="1" />
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="TextView" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:text="ที่อยู่ :"
-                                android:layout_height="wrap_content"
                                 android:id="@+id/textView50"
-                                android:layout_weight="1"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="170dp" />
-
-                            <TextView
-                                android:text="TextView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView38"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:text="อีเมล :"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView47"
-                                android:layout_weight="1"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_width="170dp" />
-
-                            <TextView
-                                android:text="TextView"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView39"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:text="เลขบัตรประชาชน :"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView48"
-                                android:layout_weight="1"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginLeft="10dp"
                                 android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="ที่อยู่ :" />
+
+                            <TextView
+                                android:id="@+id/textView38"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="TextView" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView47"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="อีเมล :" />
+
+                            <TextView
+                                android:id="@+id/textView39"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="TextView" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView48"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="เลขบัตรประชาชน :"
                                 android:textSize="10sp" />
 
                             <TextView
-                                android:text="TextView"
+                                android:id="@+id/textView40"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/textView40"
-                                android:layout_marginTop="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_weight="1" />
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="TextView" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:text="เบอร์ติดต่อ :"
-                                android:layout_height="wrap_content"
                                 android:id="@+id/textView49"
-                                android:layout_weight="1"
-                                android:layout_marginTop="10dp"
+                                android:layout_width="170dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
-                                android:layout_width="170dp" />
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="เบอร์ติดต่อ :" />
 
                             <TextView
-                                android:text="TextView"
+                                android:id="@+id/textView10"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/textView10"
-                                android:layout_marginTop="10dp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_weight="1" />
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="1"
+                                android:text="TextView" />
                         </LinearLayout>
                     </LinearLayout>
                 </ScrollView>
@@ -209,9 +210,9 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/pager"
@@ -223,24 +224,24 @@
                 </LinearLayout>
 
                 <TextView
-                    android:text="โพสประกาศล่าสุด"
+                    android:id="@+id/textView52"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView52"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="10dp" />
+                    android:text="โพสประกาศล่าสุด"
+                    android:textSize="18sp" />
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="133dp"
-                    android:animateLayoutChanges="false">
+                    android:animateLayoutChanges="false"
+                    android:orientation="vertical">
 
                     <ListView
+                        android:id="@+id/lisv_post_new_byuser"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/lisv_post_new_byuser" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

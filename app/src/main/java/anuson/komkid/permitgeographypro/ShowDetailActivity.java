@@ -3,6 +3,7 @@ package anuson.komkid.permitgeographypro;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,7 +19,7 @@ import java.util.Date;
 public class ShowDetailActivity extends AppCompatActivity {
 
     //Explicit
-    private String titleString, textString, startString, endString,
+    private String idStrings,titleString, textString, startString, endString,
             statusString, urlPic1String, urlPic2String;
 
     private TextView titleTextView, textView, startTextView,
@@ -26,7 +27,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     private ImageView pic1ImageView, pic2ImageView;
 
-    private Button button,button_customer;
+    private Button button,button_customer,button_stop;
 
 
     @Override
@@ -38,6 +39,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         bindWidget();
 
         //Get Value From Intent
+        idStrings =getIntent().getStringExtra("post_id");
         titleString = getIntent().getStringExtra("post_tiltle");
         textString = getIntent().getStringExtra("post_text");
         startString = getIntent().getStringExtra("post_data_ster");
@@ -45,6 +47,8 @@ public class ShowDetailActivity extends AppCompatActivity {
         statusString = getIntent().getStringExtra("status_reserv_id");
         urlPic1String = getIntent().getStringExtra("post_pic");
         urlPic2String = getIntent().getStringExtra("post_pic_two");
+
+        Log.d("16MerV1", "JSON_post_1 ==> " + idStrings);
 
         //Show View
         showView();
@@ -60,6 +64,7 @@ public class ShowDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent newActivity = new Intent(ShowDetailActivity.this, Manu_customer_by_farmer.class);
+                newActivity.putExtra("post_id_to_user", idStrings);
                 startActivity(newActivity);
             }
         });
@@ -82,6 +87,17 @@ public class ShowDetailActivity extends AppCompatActivity {
         Picasso.with(ShowDetailActivity.this)
                 .load(urlPic2String).into(pic2ImageView);
 
+
+        if (statusString.equals("0")) {
+            button_customer.setText("-");
+            button_customer.setEnabled(false);
+        }else if (statusString.equals("1")) {
+            button_stop.setEnabled(false);
+        }else if (statusString.equals("2")){
+            button_customer.setEnabled(false);
+            button_stop.setEnabled(false);
+        }
+
     }
 
     private String showStatus(String statusString) {
@@ -103,6 +119,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         pic2ImageView = (ImageView) findViewById(R.id.imageView7);
         button = (Button) findViewById(R.id.button5);
         button_customer = (Button) findViewById(R.id.button11);
+        button_stop = (Button) findViewById(R.id.button9);
     }
     public static String dateThai(String strDate)
     {
