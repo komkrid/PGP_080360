@@ -34,7 +34,7 @@
             android:autoText="false"
             android:hint="ชื่อผู้ใช้"
             android:inputType="text"
-            android:text="farmer1" />
+            android:text="admin" />
 
         <EditText
             android:layout_width="wrap_content"

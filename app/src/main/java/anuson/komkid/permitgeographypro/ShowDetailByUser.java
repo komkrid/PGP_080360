@@ -2,6 +2,7 @@ package anuson.komkid.permitgeographypro;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,9 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,20 +31,31 @@ public class ShowDetailByUser extends AppCompatActivity {
     //Explicit
     private String titleString, textString, startString, endString,
             statusString, urlPic1String, urlPic2String,
-            post_idString, mem_u_idString,datatimeString;
+            post_idString, mem_u_idString,datatimeString,post_id;
 
     private TextView titleTextView, textView, startTextView,
             endTextView, statusTextView;
 
-    private ImageView pic1ImageView, pic2ImageView;
+    private TextView namefarmerTextView,add_farmerTextView,tel_farmerTextView;
 
-    private Button button, orderButton;
+    private ImageView pic1ImageView, pic2ImageView,pic_3ImageView;
 
-    private String[] loginStrings;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+    private Button button, orderButton,scoreButton;
+
+    private String[] columnfarmerStrings = new String[]{
+            "post_id",
+            "mem_id",
+            "mem_name",
+            "mem_farm_name",
+            "mem_tel",
+            "mem_farm_type",
+            "mem_farm_add",
+            "mem_farm_area",
+            "mem_farm_latitude",
+            "mem_farm_longtitude",
+            "mem_pictures"};
+    private String[] loginStrings,mem_far_String;
+
     private GoogleApiClient client;
 
     @Override
@@ -52,6 +67,73 @@ public class ShowDetailByUser extends AppCompatActivity {
 
         //Setup
         loginStrings = getIntent().getStringArrayExtra("Login");
+        post_id = getIntent().getStringExtra("idPost");
+        Log.d("19MerV1", "post_idString ==>" + post_id);
+
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        orderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmOrder();
+            }   // onClick
+        });
+
+        scoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newActivity = new Intent(ShowDetailByUser.this, Score_Star.class);
+                newActivity.putExtra("mem_u_id", loginStrings[0]);
+                newActivity.putExtra("post_id", mem_far_String[0]);
+                newActivity.putExtra("mem_id", mem_far_String[1]);
+                newActivity.putExtra("mem_name", mem_far_String[2]);
+                startActivity(newActivity);
+
+            }
+        });
+
+
+        try {
+            Syn_post_by_member_farmer_where_id syn_post_by_member_farmer_where_id = new Syn_post_by_member_farmer_where_id(ShowDetailByUser.this,post_id);
+            syn_post_by_member_farmer_where_id.execute();
+            String a = syn_post_by_member_farmer_where_id.get();
+            Log.d("19MerV1", "JSoN ==> " + a);
+
+            namefarmerTextView = (TextView) findViewById(R.id.textView107);
+            add_farmerTextView = (TextView) findViewById(R.id.textView108);
+            tel_farmerTextView = (TextView) findViewById(R.id.textView109);
+            pic_3ImageView = (ImageView) findViewById(R.id.pic_3Image);
+
+
+
+            JSONArray jsonArray = new JSONArray(a);
+            mem_far_String = new String[columnfarmerStrings.length];
+
+            for (int i = 0; i < jsonArray.length(); i += 1) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    for (int j = 0; j < columnfarmerStrings.length; j += 1) {
+                        mem_far_String[j] = jsonObject.getString(columnfarmerStrings[j]);
+                        Log.d("14JenV3", "jsonObject : " + j + " : " + mem_far_String[j]);
+
+                        namefarmerTextView.setText("ชื่อ-นามสกุล : " + mem_far_String[2]);
+                        add_farmerTextView.setText("ที่อยู่ : " + mem_far_String[6]);
+                        tel_farmerTextView.setText("เบอร์โทร : " + mem_far_String[4]);
+
+                        Picasso.with(ShowDetailByUser.this).load(mem_far_String[10]).into(pic_3ImageView);
+
+                    }
+
+            }//for
+        }catch (Exception e){
+
+        }
 
         //Get Value From Intent
         titleString = getIntent().getStringExtra("post_tiltle");
@@ -69,22 +151,6 @@ public class ShowDetailByUser extends AppCompatActivity {
         addScoreToServer();
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-
-        orderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                confirmOrder();
-
-            }   // onClick
-        });
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -103,7 +169,6 @@ public class ShowDetailByUser extends AppCompatActivity {
 
         String post_id = getIntent().getStringExtra("idPost");
         String mem_u_id = loginStrings[0];
-
 
     }   // addScore
 
@@ -189,6 +254,7 @@ public class ShowDetailByUser extends AppCompatActivity {
 
         Picasso.with(ShowDetailByUser.this)
                 .load(urlPic1String).into(pic1ImageView);
+
         Picasso.with(ShowDetailByUser.this)
                 .load(urlPic2String).into(pic2ImageView);
 
@@ -224,6 +290,8 @@ public class ShowDetailByUser extends AppCompatActivity {
         pic2ImageView = (ImageView) findViewById(R.id.imageView11);
         button = (Button) findViewById(R.id.button10);
         orderButton = (Button) findViewById(R.id.button6);
+        scoreButton =  (Button) findViewById(R.id.button12);
+
     }
 
     public static String dateThai(String strDate) {

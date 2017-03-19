@@ -14,7 +14,6 @@ public class Menu_farmer extends TabActivity{
 
         private String[] userLoginStrings;
 
-
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_farmer);
