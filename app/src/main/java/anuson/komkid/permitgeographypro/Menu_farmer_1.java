@@ -18,18 +18,17 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-
 public class Menu_farmer_1 extends FragmentActivity {
 
     //Explicit
     private ImageView imageView;
     private String[] userLoginStrings;
-    private TextView gardenNameTextView,userNameTextView,addressTextView,
-                       telTextView,keyTextView,farmnameTextView,areaTextView,farmaddTextView ;
+    private TextView gardenNameTextView, userNameTextView, addressTextView,
+            telTextView, keyTextView, farmnameTextView, areaTextView, farmaddTextView;
 
-
+    public static String value;
     final Context context = this;
-    private Button button,button_out;
+    private Button button, button_out;
     private String srt;
 
     //สไลรูปภาพ
@@ -41,7 +40,25 @@ public class Menu_farmer_1 extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_farmer_1);
 
-        //ฺฺBind Widget
+        try {
+            Syn_advice syn_advice = new Syn_advice(Menu_farmer_1.this);
+            syn_advice.execute();
+            String s = syn_advice.get();
+            value = s;
+            Log.d("22MerV3", "Advice" + s);
+
+            adapter = new MyPageAdapter(getSupportFragmentManager());
+            pager = (ViewPager) findViewById(R.id.pager);
+            pager.setAdapter(adapter);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//สไลท์ภาพ
+
+
+//ฺฺBind Widget
         imageView = (ImageView) findViewById(R.id.imvFarmer);
 
         gardenNameTextView = (TextView) findViewById(R.id.textView8);
@@ -64,72 +81,66 @@ public class Menu_farmer_1 extends FragmentActivity {
         try {//แสดงรูปภาพ
             Picasso.with(Menu_farmer_1.this).load(userLoginStrings[14]).into(imageView);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }//try
 
         //Show Text
 
-            userNameTextView.setText("" + userLoginStrings[3]);
-            addressTextView.setText(""+ userLoginStrings[4]);
-            gardenNameTextView.setText("" + userLoginStrings[8]);
-            telTextView.setText("" + userLoginStrings[5]);
-            keyTextView.setText("" + userLoginStrings[6]);
-            farmnameTextView.setText("" + userLoginStrings[7]);
-            areaTextView.setText("" + userLoginStrings[9]);
-            farmaddTextView.setText("" + userLoginStrings[13]);
+        userNameTextView.setText("" + userLoginStrings[3]);
+        addressTextView.setText("" + userLoginStrings[4]);
+        gardenNameTextView.setText("" + userLoginStrings[8]);
+        telTextView.setText("" + userLoginStrings[5]);
+        keyTextView.setText("" + userLoginStrings[6]);
+        farmnameTextView.setText("" + userLoginStrings[7]);
+        areaTextView.setText("" + userLoginStrings[9]);
+        farmaddTextView.setText("" + userLoginStrings[13]);
 
-            //สไลท์ภาพ
-            adapter = new MyPageAdapter(getSupportFragmentManager());
-            pager = (ViewPager) findViewById(R.id.pager);
-            pager.setAdapter(adapter);
 
-            button = (Button) findViewById(R.id.button_show_alert_dialog);
-            button.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        button = (Button) findViewById(R.id.button_show_alert_dialog);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(context);
 //                alert.setTitle("ปลดล็อคชื่อผู้ใช้ที่ติดสถานะ ล็อค");
-                    alert.setMessage("กรุณาใส่ ชื่อผู้ใช้");
+                alert.setMessage("กรุณาใส่ ชื่อผู้ใช้");
 
-                    final EditText input = new EditText(context);
-                    alert.setView(input);
+                final EditText input = new EditText(context);
+                alert.setView(input);
 
-                    alert.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-
-                            srt = input.getEditableText().toString();
-
-                            Add_blank_Lis_by_farmer add_blank_lis_by_farmer = new Add_blank_Lis_by_farmer(Menu_farmer_1.this,srt);
-                            add_blank_lis_by_farmer.execute();
+                alert.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
 
-                        }
-                    });
-                    alert.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    });
-                    AlertDialog alertDialog = alert.create();
-                    alertDialog.show();
-                }
-            });
+                        srt = input.getEditableText().toString();
+
+                        Add_blank_Lis_by_farmer add_blank_lis_by_farmer = new Add_blank_Lis_by_farmer(Menu_farmer_1.this, srt);
+                        add_blank_lis_by_farmer.execute();
 
 
+                    }
+                });
+                alert.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog = alert.create();
+                alertDialog.show();
+            }
+        });
 
 
         button_out = (Button) findViewById(R.id.button_out);
-        button_out.setOnClickListener(new View.OnClickListener(){
+        button_out.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 finish();
             }
         });
-        }
     }
+}
 
 
 

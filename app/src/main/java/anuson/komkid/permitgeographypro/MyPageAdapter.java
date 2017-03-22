@@ -9,21 +9,17 @@ public class MyPageAdapter extends FragmentPagerAdapter {
         super(fm);
     }
 
-    public int getCount() {
-//        if (views != null) {
-//            return Integer.MAX_VALUE;
-//        } else {
-//            return 0;
-//        }
-        return 3;
+    public int getCount() {return 3;
     }
 
+
+
     public Fragment getItem(int position) {
-        if (position == 0)
+        if (position == 0) {
             return new Fragment_1();
-        else if (position == 1)
+        }else if (position == 1) {
             return new Fragment_2();
-        else if (position == 2)
+        }else if (position == 2)
             return new Fragment_3();
         return null;
     }

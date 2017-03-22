@@ -8,11 +8,14 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-public class Syn_new_post extends AsyncTask<Void,Void,String>{
-    private static final String urlJSON = "http://swiftcodingthai.com/gam/get_new_post.php";
-    private Context context;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-    public Syn_new_post(Context context){this.context = context;}
+public class Syn_advice extends AsyncTask<Void, Void, String> {
+    private Context context;
+    private static final String urlJSON ="http://swiftcodingthai.com/gam/php_get_advice.php";
+
+    public Syn_advice(Context context) {this.context = context; }
     @Override
     protected String doInBackground(Void... params) {
         try{

@@ -48,18 +48,30 @@ public class Menu_user_1 extends FragmentActivity {
             "mem_farm_longtitude",
             "mem_farm_add",
             "mem_pictures"};
-
-
-
+    public static String value;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_user_1);
 
+        try {
+            Syn_advice syn_advice = new Syn_advice(Menu_user_1.this);
+            syn_advice.execute();
+            String s = syn_advice.get();
+            value = s;
+            Log.d("22MerV3", "Advice" + s);
+
 //สไลท์ภาพ
-        adapter = new MyPageAdapter(getSupportFragmentManager());
-        pager = (ViewPager) findViewById(R.id.pager);
-        pager.setAdapter(adapter);
+            adapter = new MyPageAdapter(getSupportFragmentManager());
+            pager = (ViewPager) findViewById(R.id.pager);
+            pager.setAdapter(adapter);
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
 
         //ฺฺBind Widget
