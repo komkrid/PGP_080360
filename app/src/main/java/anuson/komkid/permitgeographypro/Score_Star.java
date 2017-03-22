@@ -28,7 +28,7 @@ import java.io.IOException;
 
 public class Score_Star extends AppCompatActivity {
 
-    private Button btnSubmit;
+    private Button btnSubmit,btnblack;
     private TextView txtRatingValue,mem_nameTextView;
     private RatingBar ratingBar;
     private String ratingString;
@@ -53,6 +53,8 @@ public class Score_Star extends AppCompatActivity {
         mem_nameStrings = getIntent().getStringExtra("mem_name");
 
 
+
+
         mem_nameTextView = (TextView) findViewById(R.id.textView116);
         mem_nameTextView.setText("คุณ " + mem_nameStrings);
 
@@ -75,6 +77,7 @@ public class Score_Star extends AppCompatActivity {
     private void addListenerOnRatingBar() {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar2);
         btnSubmit = (Button) findViewById(R.id.button14);
+        btnblack = (Button) findViewById(R.id.button13);
 
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -83,41 +86,20 @@ public class Score_Star extends AppCompatActivity {
 
                 confirmData();
 
-//              Toast.makeText(Score_Star.this,String.valueOf(ratingBar.getRating()), Toast.LENGTH_SHORT).show();
 
-//                try {
-//                    Syn_user_score syn_user_score = new Syn_user_score(Score_Star.this, mem_u_idStrings);
-//                    syn_user_score.execute();
-//                    String s = syn_user_score.get();
-//                    Log.d("20MerV2", "user_score ==>" + s);
-//
-//                    JSONArray jsonArray = new JSONArray(s);
-//                    for (int i=0;i<jsonArray.length();i+=1){
-//                        JSONObject jsonObject= jsonArray.getJSONObject(i);
-//                        if (post_idStrings.equals(jsonObject.getString("post_id"))) {
-//
-//                            aBoolean = false; //User ซ้ำ
-//
-//                        }//if
-//                    }//for
-//                    if (aBoolean) {
-//                        //User OK
-//                        confirmData();
-//                    }else {
-//                        //User Not OK
-//                        MyAlert myAlert = new MyAlert();
-//                        myAlert.myDialog(context,"User ซ้ำ",
-//                                "กรุณาเปลี่ยน ชื่อผู้ใช้งาน");
-//
-//                    }
-//
-//                }catch (Exception e){
-//                    Log.d("21decV2","e ==>" + e.toString());
-//                }//try
+            }
+        });//ButtonSubmit
+        btnblack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                finish();
 
 
             }
         });//ButtonSubmit
+
+
     }//addListenerOnRatingBar
 
 
@@ -142,11 +124,10 @@ public class Score_Star extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-//                Add_Score_Star add_score_star = new Add_Score_Star(Score_Star.this,ratingString,post_idStrings,mem_idStrings,mem_u_idStrings);
-//                add_score_star.execute();
-
-
+                Add_Score_Star add_score_star = new Add_Score_Star(Score_Star.this,ratingString,post_idStrings,mem_idStrings,mem_u_idStrings);
+                add_score_star.execute();
                 dialog.dismiss();
+                finish();
             }
         });
         builder.show();

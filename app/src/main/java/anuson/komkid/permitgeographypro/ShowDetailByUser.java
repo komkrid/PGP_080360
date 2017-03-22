@@ -1,6 +1,7 @@
 package anuson.komkid.permitgeographypro;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -55,7 +57,8 @@ public class ShowDetailByUser extends AppCompatActivity {
             "mem_farm_longtitude",
             "mem_pictures"};
     private String[] loginStrings,mem_far_String;
-
+    private boolean aBoolean = true;
+    private Context context;
     private GoogleApiClient client;
 
     @Override
@@ -69,6 +72,7 @@ public class ShowDetailByUser extends AppCompatActivity {
         loginStrings = getIntent().getStringArrayExtra("Login");
         post_id = getIntent().getStringExtra("idPost");
         Log.d("19MerV1", "post_idString ==>" + post_id);
+
 
 
 
@@ -88,12 +92,47 @@ public class ShowDetailByUser extends AppCompatActivity {
         scoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent newActivity = new Intent(ShowDetailByUser.this, Score_Star.class);
-                newActivity.putExtra("mem_u_id", loginStrings[0]);
-                newActivity.putExtra("post_id", mem_far_String[0]);
-                newActivity.putExtra("mem_id", mem_far_String[1]);
-                newActivity.putExtra("mem_name", mem_far_String[2]);
-                startActivity(newActivity);
+
+
+
+                try {
+                    Syn_user_score syn_user_score = new Syn_user_score(ShowDetailByUser.this, loginStrings[0]);
+                    syn_user_score.execute();
+                    String s = syn_user_score.get();
+                    Log.d("20MerV2", "user_score ==>" + s);
+
+                    if (s.equals("null")){
+                        Intent newActivity = new Intent(ShowDetailByUser.this, Score_Star.class);
+                        newActivity.putExtra("mem_u_id", loginStrings[0]);
+                        newActivity.putExtra("post_id", mem_far_String[0]);
+                        newActivity.putExtra("mem_id", mem_far_String[1]);
+                        newActivity.putExtra("mem_name", mem_far_String[2]);
+                        startActivity(newActivity);
+
+                    }else {
+                        JSONArray jsonArray = new JSONArray(s);
+                        for (int i=0;i<jsonArray.length();i+=1){
+                            JSONObject jsonObject= jsonArray.getJSONObject(i);
+                            if (post_id.equals(jsonObject.getString("post_id"))) {
+                                Log.d("22MerV1", "jsonObject ==>" + post_id);
+                                aBoolean= false;
+                                Toast.makeText(ShowDetailByUser.this,String.valueOf("ท่านไม่สามารถให้ คะแนนซ้ำได้"),
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }//for
+                        if(aBoolean){
+                            Intent newActivity = new Intent(ShowDetailByUser.this, Score_Star.class);
+                            newActivity.putExtra("mem_u_id", loginStrings[0]);
+                            newActivity.putExtra("post_id", mem_far_String[0]);
+                            newActivity.putExtra("mem_id", mem_far_String[1]);
+                            newActivity.putExtra("mem_name", mem_far_String[2]);
+                            startActivity(newActivity);
+                        }
+                    }
+
+                }catch (Exception e){
+                    Log.d("21decV2","e ==>" + e.toString());
+                }
 
             }
         });
@@ -261,8 +300,10 @@ public class ShowDetailByUser extends AppCompatActivity {
 
         if (statusString.equals("0")) {
             orderButton.setText("จอง");
+            scoreButton.setEnabled(false);
         }else if (statusString.equals("1")){
             orderButton.setText("ยกเลิกการจอง");
+            scoreButton.setEnabled(false);
         }else if (statusString.equals("2")){
             orderButton.setText("สิ้นสุดการจอง");
             orderButton.setEnabled(false);

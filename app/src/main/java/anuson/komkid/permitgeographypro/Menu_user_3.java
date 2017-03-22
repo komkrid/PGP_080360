@@ -33,6 +33,7 @@ public class Menu_user_3 extends Activity{
                 final String[] mem_idStrings = new String[jsonArray.length()];
                 final String[] mem_farm_nameStrings = new String[jsonArray.length()];
                 final String[] mem_picturesStrings = new String[jsonArray.length()];
+                final String[] score_s_Strings = new String[jsonArray.length()];
 
 
                 for (int i=0;i<jsonArray.length();i++) {
@@ -43,12 +44,14 @@ public class Menu_user_3 extends Activity{
                     mem_idStrings[i] = jsonObject.getString("mem_id");
                     mem_farm_nameStrings[i] = jsonObject.getString("mem_farm_name");
                     mem_picturesStrings[i] = jsonObject.getString("mem_pictures");
+                    score_s_Strings[i] = jsonObject.getString("score_s");
+
 
 
                     ListView listView = (ListView) findViewById(R.id.liv_score);
 
                     ScoreAdapterActivity scoreAdapterActivity = new ScoreAdapterActivity(Menu_user_3.this,
-                            scoreStrings, mem_farm_nameStrings, mem_picturesStrings);
+                            scoreStrings, mem_farm_nameStrings, mem_picturesStrings,score_s_Strings);
                     listView.setAdapter(scoreAdapterActivity);
 
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){

@@ -15,18 +15,20 @@ import com.squareup.picasso.Picasso;
 public class ScoreAdapterActivity extends BaseAdapter {
 
     private Context context;
-    private TextView soreTextView, mem_farm_nameTextView;
-    private String[] score_Strings,mem_farm_nameStrings,mem_picturesStrings;
+    private TextView soreTextView, mem_farm_nameTextView,score_sTextView;
+    private String[] score_Strings,mem_farm_nameStrings,mem_picturesStrings,score_s_Strings;
     private ImageView imageView;
 
     public ScoreAdapterActivity(Context context,
                          String[] score_Strings,
                          String[] mem_farm_nameString,
-                         String[] mem_picturesStrings) {
+                         String[] mem_picturesStrings,
+                         String[] score_s_Strings) {
         this.context = context;
         this.score_Strings = score_Strings;
         this.mem_farm_nameStrings = mem_farm_nameString;
         this.mem_picturesStrings = mem_picturesStrings;
+        this.score_s_Strings = score_s_Strings;
     }
     @Override
     public int getCount() { return mem_farm_nameStrings.length; }
@@ -47,9 +49,11 @@ public class ScoreAdapterActivity extends BaseAdapter {
         mem_farm_nameTextView = (TextView) view1.findViewById(R.id.textView110);
         soreTextView = (TextView) view1.findViewById(R.id.textView111);
         imageView = (ImageView) view1.findViewById(R.id.imageView112);
+        score_sTextView = (TextView) view1.findViewById(R.id.textView112);
 
         soreTextView.setText(score_Strings[i]);
         mem_farm_nameTextView.setText(mem_farm_nameStrings[i]);
+        score_sTextView.setText(score_s_Strings[i]);
         Picasso.with(context).load(mem_picturesStrings[i]).into(imageView);
 
         return view1;

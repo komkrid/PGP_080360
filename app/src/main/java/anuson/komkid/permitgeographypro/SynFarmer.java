@@ -26,7 +26,6 @@ public class SynFarmer extends AsyncTask<Void, Void , String>{
             Request.Builder builder = new Request.Builder();
             Request request = builder.url(urlJSON).build();
             Response response = okHttpClient.newCall(request).execute();
-
             return  response.body().string();
 
         }catch (Exception e){

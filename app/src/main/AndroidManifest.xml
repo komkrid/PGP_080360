@@ -88,8 +88,11 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".Manu_customer_by_farmer" />
-        <activity android:name=".Score_Star"></activity>
+            <activity android:name=".Manu_customer_by_farmer" />
+            <activity android:name=".Score_Star" />
+            <activity android:name=".Menu_user_4">
+            <!--<activity android:name=".Score_Star" />-->
+        </activity>
     </application>
 
 </manifest>
