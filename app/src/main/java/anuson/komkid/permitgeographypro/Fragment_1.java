@@ -47,7 +47,7 @@ public class Fragment_1 extends Fragment {
         try {
             s = Menu_farmer_1.value;
             s = Menu_user_1.value;
-            Log.d("22MarV4",s);
+
             JSONArray jsonArray = new JSONArray(s);
 
             Fragment_1Strings = new String[columnFragment.length];

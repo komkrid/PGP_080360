@@ -119,7 +119,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         pic2ImageView = (ImageView) findViewById(R.id.imageView7);
         button = (Button) findViewById(R.id.button5);
         button_customer = (Button) findViewById(R.id.button11);
-        button_stop = (Button) findViewById(R.id.button9);
+//        button_stop = (Button) findViewById(R.id.button9);
     }
     public static String dateThai(String strDate)
     {

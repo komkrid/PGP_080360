@@ -33,8 +33,7 @@
             android:layout_gravity="center_horizontal"
             android:autoText="false"
             android:hint="ชื่อผู้ใช้"
-            android:inputType="text"
-            android:text="admin" />
+            android:inputType="text" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -43,8 +42,7 @@
             android:ems="10"
             android:id="@+id/editText2"
             android:layout_gravity="center_horizontal"
-            android:hint="รหัสผ่าน"
-            android:text="1234"/>
+            android:hint="รหัสผ่าน" />
 
         <RadioGroup
             android:layout_width="match_parent"

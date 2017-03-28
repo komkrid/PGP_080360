@@ -43,10 +43,10 @@ public class Menu_user extends TabActivity {
         intent1.putExtra("Login", userLoginStrings);
         tab2.setContent(intent1);
 
-        tab5.setIndicator("สวน");
-        Intent intent3 = new Intent(Menu_user.this, Menu_user_4.class);
-        intent3.putExtra("Login", userLoginStrings);
-        tab5.setContent(intent3);
+//        tab5.setIndicator("สวน");
+//        Intent intent3 = new Intent(Menu_user.this, Menu_user_4.class);
+//        intent3.putExtra("Login", userLoginStrings);
+//        tab5.setContent(intent3);
 
 
         tab3.setIndicator("การจอง");
@@ -61,7 +61,7 @@ public class Menu_user extends TabActivity {
 
         tabHost.addTab(tab1);
         tabHost.addTab(tab2);
-        tabHost.addTab(tab5);
+//        tabHost.addTab(tab5);
         tabHost.addTab(tab3);
         tabHost.addTab(tab4);
 

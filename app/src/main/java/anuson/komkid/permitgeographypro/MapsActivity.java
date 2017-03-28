@@ -59,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void buttonController() {
 
-//        button = (Button) findViewById(R.id.btnChooseSpinner);
+        button = (Button) findViewById(R.id.btnChooseSpinner);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -233,21 +233,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             //Create Spinner
 
-//            Spinner spinner = (Spinner) findViewById(R.id.spnGarden);
-//            ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(MapsActivity.this,
-//                    android.R.layout.simple_list_item_1, titleString);
-//            spinner.setAdapter(stringArrayAdapter);
-//            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                @Override
-//                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                    index[0] = i;
-//                }
-//
-//                @Override
-//                public void onNothingSelected(AdapterView<?> adapterView) {
-//                    index[0] = 0;
-//                }
-//            });
+            Spinner spinner = (Spinner) findViewById(R.id.spnGarden);
+            ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(MapsActivity.this,
+                    android.R.layout.simple_list_item_1, titleString);
+            spinner.setAdapter(stringArrayAdapter);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    index[0] = i;
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    index[0] = 0;
+                }
+            });
 
             buttonController();
 
